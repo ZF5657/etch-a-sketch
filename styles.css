@@ -1,0 +1,9 @@
+* {
+    margin: 0;
+}
+
+#mainContainer {
+    display: flex;
+    border: none;
+    flex-wrap: wrap;
+}
