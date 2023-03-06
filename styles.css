@@ -3,7 +3,10 @@
 }
 
 #mainContainer {
-    display: flex;
     border: none;
+}
+
+#divContainer {
+    display: flex;
     flex-wrap: wrap;
 }
