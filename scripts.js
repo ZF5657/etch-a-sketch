@@ -2,16 +2,17 @@ const mainContainer = document.querySelector('#mainContainer');
 const divContainer = document.querySelector('#divContainer');
 
 divContainer.style.border = "none";
-divContainer.style = "margin-top: 50px";
-divContainer.style = "margin-bottom: 1px";
+divContainer.setAttribute('style', 'margin-top: 10px');
+
 
 
 const gridButton = document.createElement('button');
 mainContainer.insertBefore(gridButton, divContainer);
-gridButton.style = "margin-top: 20px";
-gridButton.style = "margin-bottom: 10px";
-gridButton.style.height = "50px";
-gridButton.style.width = "100px";
+gridButton.setAttribute('style', 'margin-top: 10px; margin-bottom: 10px; background-color: rgb(300, 200, 140); font-weight: bold');
+gridButton.style.height = "30px";
+gridButton.style.width = "150px";
+gridButton.style.color = 'blue';
+gridButton.textContent = 'ADJUST GRID';
 
 
 //creates div boxes within divContainer
