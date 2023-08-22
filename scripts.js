@@ -1,6 +1,6 @@
-/*document.addEventListener("DOMContentLoaded", function (){
-    createGrid(32);
-});*/
+document.addEventListener("DOMContentLoaded", () => {
+    createGrid(16);
+});
 
 const mainContainer = document.querySelector('.main-container');
 mainContainer.stlye = ('display: flex; flex-wrap: wrap; justify-content: center; align-items: center;');
@@ -36,43 +36,29 @@ mainContainer.appendChild(canvasContainer);
 
 
 const footerContainer = document.querySelector('.footer');
-footerContainer.style = ('display: flex; justify-content: space-between; margin-top: 20px')
+footerContainer.style = ('display: flex; justify-content: center; margin-top: 20px')
 mainContainer.appendChild(footerContainer);
 
 
 const clearButton = document.createElement('button');
-clearButton.textContent = 'Clear';
+clearButton.textContent = 'Clear Grid';
 clearButton.setAttribute('class', 'btn btn-dark')
-clearButton.style = ('padding: 3px');
+clearButton.style = ('padding: 3px; margin-right: 100px');
 footerContainer.appendChild(clearButton);
 
 
 const resetButton = document.createElement('button');
-resetButton.textContent = 'Reset';
+resetButton.textContent = 'Reset Grid';
 resetButton.setAttribute('class', 'btn btn-warning')
-resetButton.style = ('padding: 3px');
+resetButton.style = ('padding: 3px; margin-right: 100px');
 footerContainer.appendChild(resetButton);
 
 
 const randomColorButton = document.createElement('button');
 randomColorButton.textContent = 'Random Color';
 randomColorButton.setAttribute('class', 'btn btn-primary')
-randomColorButton.style = ('padding: 3px;');
+randomColorButton.style = ('padding: 3px; margin-right: 80px');
 footerContainer.appendChild(randomColorButton);
-
-
-/*const createGrid = (num) => {
-    canvasContainer.style.gridTemplateColumns = `repeat(${num}, 1fr)`
-    canvasContainer.style.gridTemplateRows = `repeat(${num}, 1fr)`
-
-    let numDivs = num * num;
-
-    for(let i = 0; i < numDivs; i++) {
-        let gridDiv = document.createElement('div');
-        canvasContainer.insertAdjacentElement("beforeend", div);
-
-    };
-}*/
 
 
 const createGrid = (num) => {
@@ -84,11 +70,10 @@ const createGrid = (num) => {
     for(let i = 0; i < numDivs; i++) {
         let gridDiv = document.createElement('div');
         canvasContainer.appendChild(gridDiv);
-
+        gridDiv.addEventListener('mouseover', () => {
+            gridDiv.style = ('background: black')
+        })
     };
-}
-
-
-createGrid(32);
+};
 
 
