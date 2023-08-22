@@ -1,5 +1,10 @@
+//Waits for everything to load, then creates default grid size and adds input button function for changing grid size
 document.addEventListener("DOMContentLoaded", () => {
     createGrid(16);
+    inputButton.addEventListener('click', () => {
+        let gridSize = createGrid(gridInput.value);
+        createGrid(gridSize);
+    });
 });
 
 const mainContainer = document.querySelector('.main-container');
@@ -12,13 +17,15 @@ headerContainer.style = ('margin-top: 20px')
 
 const headerP = document.createElement("p");
 headerContainer.appendChild(headerP);
-headerP.textContent = 'Choose how many squares you would like in your canvas (1 = 1x1 to maximum 100 = 100x100)';
+headerP.textContent = 'Choose how many squares you would like in your canvas (2 = 2x2 to maximum 100 = 100x100)';
 headerP.style = ('margin-bottom: 10px');
 
 
 const gridInput = document.createElement("input");
-gridInput.setAttribute('type', 'text');
-gridInput.style = ('width: 35px; margin-right: 20px');
+gridInput.setAttribute('type', 'number');
+gridInput.setAttribute('max', '100');
+gridInput.setAttribute('min', '2');
+gridInput.style = ('width: 50px; margin-right: 20px');
 headerContainer.appendChild(gridInput);
 
 
@@ -61,6 +68,7 @@ randomColorButton.style = ('padding: 3px; margin-right: 80px');
 footerContainer.appendChild(randomColorButton);
 
 
+//Grid size creation funcion that creates divs in a defined size from a loop and appends it into the grid/canvas container
 const createGrid = (num) => {
     canvasContainer.style.gridTemplateColumns = `repeat(${num}, 1fr)`
     canvasContainer.style.gridTemplateRows = `repeat(${num}, 1fr)`
@@ -72,7 +80,7 @@ const createGrid = (num) => {
         canvasContainer.appendChild(gridDiv);
         gridDiv.addEventListener('mouseover', () => {
             gridDiv.style = ('background: black')
-        })
+        });
     };
 };
 
