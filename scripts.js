@@ -1,10 +1,8 @@
-//Waits for everything to load, then creates default grid size and adds input button function for changing grid size
+let color = "black";
+
+//Waits for everything to load, then creates default grid size
 document.addEventListener("DOMContentLoaded", () => {
     createGrid(16);
-    inputButton.addEventListener('click', () => {
-        let gridSize = createGrid(gridInput.value);
-        createGrid(gridSize);
-    });
 });
 
 const mainContainer = document.querySelector('.main-container');
@@ -47,25 +45,15 @@ footerContainer.style = ('display: flex; justify-content: center; margin-top: 20
 mainContainer.appendChild(footerContainer);
 
 
-const clearButton = document.createElement('button');
-clearButton.textContent = 'Clear Grid';
-clearButton.setAttribute('class', 'btn btn-dark')
-clearButton.style = ('padding: 3px; margin-right: 100px');
-footerContainer.appendChild(clearButton);
+const eraseButton = document.getElementsByClassName('.btn btn-secondary');
 
 
-const resetButton = document.createElement('button');
-resetButton.textContent = 'Reset Grid';
-resetButton.setAttribute('class', 'btn btn-warning')
-resetButton.style = ('padding: 3px; margin-right: 100px');
-footerContainer.appendChild(resetButton);
+const resetButton = document.getElementsByClassName('.btn btn-warning');
 
 
-const randomColorButton = document.createElement('button');
-randomColorButton.textContent = 'Random Color';
-randomColorButton.setAttribute('class', 'btn btn-primary')
-randomColorButton.style = ('padding: 3px; margin-right: 80px');
-footerContainer.appendChild(randomColorButton);
+const randomColorButton = document.getElementsByClassName('.btn btn-primary');
+
+
 
 
 //Grid size creation funcion that creates divs in a defined size from a loop and appends it into the grid/canvas container
@@ -76,12 +64,43 @@ const createGrid = (num) => {
     let numDivs = num * num;
 
     for(let i = 0; i < numDivs; i++) {
-        let gridDiv = document.createElement('div');
+        let gridDiv = document.createElement('div.canvas');
         canvasContainer.appendChild(gridDiv);
         gridDiv.addEventListener('mouseover', () => {
-            gridDiv.style = ('background: black')
-        });
+            //event listener that changes background color depending on which button is selected
+            if(color == "random") {
+                let randomR = Math.floor(Math.random() * 256)
+                let randomG = Math.floor(Math.random() * 256)
+                let randomB = Math.floor(Math.random() * 256)
+                gridDiv.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+            }
+            else if(color == "white") {
+                gridDiv.style.backgroundColor = 'white';
+            }
+            else {
+               gridDiv.style.backgroundColor = 'black';
+            }
+            gridDiv.addEventListener('click', (reset))
+        })
+        canvasContainer.insertAdjacentElement('beforeend', gridDiv)
     };
 };
 
 
+const colorize = (colorChoice) => {
+    color = colorChoice;
+}
+
+
+//Input button to change the grid size based on the input box
+inputButton.addEventListener('click', () => {
+    let gridSize = createGrid(gridInput.value);
+    createGrid(gridSize);
+});
+
+
+
+const reset = () => {
+    let divs = document.querySelectorAll("div")
+    divs.forEach((div) => div.style.backgroundColor = "white")
+}

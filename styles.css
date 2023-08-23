@@ -9,3 +9,21 @@ body {
     flex-direction: column;
 }
 
+#erase {
+    padding: 3px; margin-right: 80px
+}
+
+
+#reset {
+    padding: 3px; margin-right: 80px
+}
+
+
+#black {
+    padding: 3px; margin-right: 80px
+}
+
+
+#random {
+    padding: 3px; margin-right: 80px
+}

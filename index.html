@@ -13,7 +13,12 @@
     <div class="main-container">
         <div class="header"></div>
         <div class="canvas-container"></div>
-        <div class="footer"></div>
+        <div class="footer">
+            <button class="btn btn-secondary" id="erase" onclick="colorize('white')">Eraser</button>
+            <button class="btn btn-danger" id="reset" onclick="reset()">Reset Grid</button>
+            <button class="btn btn-dark" id="black" onclick="colorize('black')">Black Color</button>
+            <button class="btn btn-primary" id="random" onclick="colorize('random')">Random Colors</button>
+        </div>
     </div>
     <script src="scripts.js" defer></script>
 </body>
