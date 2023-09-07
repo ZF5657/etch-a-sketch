@@ -37,6 +37,7 @@ headerContainer.appendChild(inputButton);
 let canvasContainer = document.querySelector('.canvas-container');
 canvasContainer.style = ('height: 600px; width: 600px; display: grid; border: 1px solid black; margin-top: 20px;');
 
+
 mainContainer.appendChild(canvasContainer);
 
 
@@ -64,7 +65,8 @@ const createGrid = (num) => {
     let numDivs = num * num;
 
     for(let i = 0; i < numDivs; i++) {
-        let gridDiv = document.createElement('div.canvas');
+        let gridDiv = document.createElement('div');
+        gridDiv.classList.add('canvas');
         canvasContainer.appendChild(gridDiv);
         gridDiv.addEventListener('mouseover', () => {
             //event listener that changes background color depending on which button is selected
@@ -80,7 +82,6 @@ const createGrid = (num) => {
             else {
                gridDiv.style.backgroundColor = 'black';
             }
-            gridDiv.addEventListener('click', (reset))
         })
         canvasContainer.insertAdjacentElement('beforeend', gridDiv)
     };
@@ -99,8 +100,8 @@ inputButton.addEventListener('click', () => {
 });
 
 
-
 const reset = () => {
-    let divs = document.querySelectorAll("div")
-    divs.forEach((div) => div.style.backgroundColor = "white")
-}
+    let squares = document.querySelectorAll('div.canvas')
+    squares.forEach((div) => div.style.backgroundColor = 'white')
+};
+
